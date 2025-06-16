@@ -4,6 +4,7 @@ import mysql.connector
 from datetime import datetime, timedelta
 import logging
 import traceback
+from db_connection import get_db_connection
 
 app = Flask(__name__)
 
@@ -26,21 +27,6 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-
-# Database connection
-def get_db_connection():
-    try:
-        conn = mysql.connector.connect(
-            host="13.234.30.109",
-            user="root",
-            password="rootmysql",
-            database="tripglide"
-        )
-        logger.info("Database connection established")
-        return conn
-    except mysql.connector.Error as e:
-        logger.error(f"Database connection failed: {str(e)}")
-        return None
 
 # API: Fetch all flight details
 @app.route('/get_data', methods=['GET', 'OPTIONS'])

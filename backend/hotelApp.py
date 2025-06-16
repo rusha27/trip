@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 from datetime import date
+from db_connection import get_db_connection
+
 
 app = Flask(__name__)
 # Apply CORS to all routes
@@ -20,17 +22,6 @@ CORS(app, resources={
 # Stripe configuration
 stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
-def get_db_connection():
-    try:
-        return mysql.connector.connect(
-            host='13.234.30.109',
-            user='root',
-            password='rootmysql',
-            database='tripglide'
-        )
-    except mysql.connector.Error as e:
-        print(f"Error connecting to MySQL: {e}")
-        return None
 
 def fetch_data(query, params=None):
     connection = get_db_connection()

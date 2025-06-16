@@ -11,6 +11,8 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 from twilio.http.http_client import TwilioHttpClient
+from db_connection import get_db_connection
+
 
 load_dotenv()
 
@@ -25,24 +27,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# MySQL Connection with reconnection logic
-def get_db_connection():
-    try:
-        db = mysql.connector.connect(
-            host="13.234.30.109",
-            user="root",
-            password="rootmysql",
-            database="tripglide"
-        )
-        if db.is_connected():
-            logger.info("Initial DB connection successful")
-            return db
-        else:
-            logger.error("Initial DB object created, but not connected")
-            return None
-    except mysql.connector.Error as e:
-        logger.error(f"Database connection failed: {e}")
-        return None
 
 # Initialize global db connection
 db = get_db_connection()

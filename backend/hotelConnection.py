@@ -1,17 +1,14 @@
 import mysql.connector
 import pandas as pd
+from db_connection import get_db_connection
+
 
 # Database Configuration (For XAMPP MySQL)
-db_config = {
-    "host": "13.234.30.109",
-    "user": "root",
-    "password": "rootmysql",
-    "database": "tripglide",
-}
+
 
 try:
     # Establish database connection
-    conn = mysql.connector.connect(**db_config)
+    conn = get_db_connection()
     cursor = conn.cursor()
 
     # Load CSV into DataFrame

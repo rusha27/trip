@@ -8,6 +8,8 @@ load_dotenv()
 import re
 from datetime import datetime
 import logging
+from db_connection import get_db_connection
+
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -21,17 +23,7 @@ load_dotenv()
 stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
 # MySQL connection function
-def get_db_connection():
-    try:
-        return mysql.connector.connect(
-            host='13.234.30.109',
-            user='root',
-            password='rootmysql',
-            database='tripglide'
-        )
-    except mysql.connector.Error as e:
-        logger.error(f"DB_CONNECTION_ERROR: Failed to connect to MySQL - Code: {e.errno}, Message: {e.msg}")
-        return None
+
 
 # Fetch data helper function
 def fetch_data(query, params=None):
