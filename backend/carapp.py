@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173"])  # Allow frontend requests
+CORS(app, origins=["https://mytripglide.netlify.app"])  # Allow frontend requests
 
 # Load environment variables
 load_dotenv()
@@ -276,8 +276,8 @@ def create_checkout_session():
                 'quantity': 1,
             }],
             mode='payment',
-            success_url='http://localhost:5173/cab-booking-confirmation',
-            cancel_url='http://localhost:5173/cancel',
+            success_url='https://mytripglide.netlify.app/cab-booking-confirmation',
+            cancel_url='https://mytripglide.netlify.app/cancel',
             metadata={
                 'car_id': str(car_id),
                 'pickup_location': pickup_location,

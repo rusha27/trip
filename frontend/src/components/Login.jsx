@@ -14,7 +14,7 @@ const Login = ({ onLogIn, mockUsers }) => {
   const [pendingUser, setPendingUser] = useState(null);
   const [identifiers, setIdentifiers] = useState([]);
 
-  const API_URL = "http://localhost:5001/api";
+  const API_URL = "https://tripglide-lw08.onrender.com";
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 

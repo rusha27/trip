@@ -13,7 +13,7 @@ app = Flask(__name__)
 # Apply CORS to all routes
 CORS(app, resources={
     r"/*": {
-        "origins": ["http://localhost:5173"],
+        "origins": ["https://mytripglide.netlify.app"],
         "methods": ["GET", "POST", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"]
     }
@@ -202,8 +202,8 @@ def create_checkout_session():
                 },
             ],
             mode='payment',
-            success_url='http://localhost:5173/hotel-booking',
-            cancel_url='http://localhost:5173/cancel',  # Updated to match frontend
+            success_url='https://mytripglide.netlify.app/hotel-booking',
+            cancel_url='https://mytripglide.netlify.app/cancel',  # Updated to match frontend
         )
         print(f"Stripe session created: {session.id}")
         return jsonify({'id': session.id})

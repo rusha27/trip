@@ -17,7 +17,7 @@ from db_connection import get_db_connection
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173"])  # Match frontend port
+CORS(app, origins=["https://mytripglide.netlify.app"])  # Match frontend port
 
 # Configure logging to file for debugging
 logging.basicConfig(
